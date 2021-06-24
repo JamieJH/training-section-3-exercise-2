@@ -1,0 +1,42 @@
+:root {
+    /* text */
+    --text-white: #ffffff;
+    --text-footer-headers: #0d4363;
+    --text-footer-footnote: #5c5b61;
+
+    /* backgrounds */
+    --bg-body: #140328;
+    /* --bg-nav-transparent: #9c3c2fc4; 130327c4
+    --bg-nav: #9c3c2f; */
+    --overlay: #41414142;
+    --bg-nav-transparent: #1a0731d0;
+    --bg-nav: #1e0a36;
+    --bg-nav-hover-transparent: #280847a9;
+    --bg-nav-hover: #130327;
+
+    /* transition */
+    --transition-short: all .3s ease-in-out;
+    --transition-normal: all .5s ease-in-out;
+    --transition-long: all 1s ease-in-out;
+
+    /* z-index */
+    --z-nav-toggler: 999;
+    --z-nav-bar: 500;
+    --z-overlay: 400;
+    --z-carousel-controls: 300;
+
+    /* widths */
+    --nav-width: 200px;
+    --side-width: 50px;
+    --content-width-xl: 1200px;
+
+    /* left */
+    --left-sm: 30px;
+    --left-md: 50px;
+    --left-lg: 100px;
+
+    /* caousel img height */
+    --slide-img-height-sm: 160px;
+    --slide-img-height-md: 170px
+
+}

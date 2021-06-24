@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixture</title>
+
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+
+    <!-- google fonts  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Euphoria+Script&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/nav-foot.css">
+    <link rel="stylesheet" href="./styles/carousel.css">
+    <link rel="stylesheet" href="./styles/carousel-blocks.css">
+</head>
+
+<body>
+    <div class="overlay"></div>
+
+    <header>
+
+        <div class="toggler-container">
+            <div class="sidebar-toggler">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+                <span class="bar bar-4"></span>
+            </div>
+        </div>
+
+        <div class="mail mail-md">
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+
+        <nav id="nav-bar">
+            <ul>
+                <li class="nav-bar__item"><a href="#">Home</a></li>
+                <li class="nav-bar__item"><a href="#">About</a></li>
+                <li class="nav-bar__item"><a href="#">History</a></li>
+                <li class="nav-bar__item"><a href="#">Services</a></li>
+                <li class="nav-bar__item"><a href="#">Contact</a></li>
+                <li class="nav-bar__item mail mail-sm">
+                    <a href="#"><i class="fas fa-envelope"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- BIG IMAGE SLIDER 1 -->
+        <div class="pixture pixture-1">
+            <div class="side-note">
+                <div class="side-note__text">
+                    <p>PAINT THE POWER <span>&nbsp;BLAZ ROBAR</span></p>
+                </div>
+                <div class="side-note__arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+
+            </div>
+            <div class="carousel carousel-1">
+                <button class="carousel__button left">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="carousel_main">
+                    <div class="carousel__content">
+                        <ul class="carousel__track">
+                            <li class="carousel__slide active">
+                                <img src="assets/images/slider-1-bg-1.jpg" alt="slider 1">
+                                <div class="slide-overlay"></div>
+                                <div class="carousel__slide-content">
+                                    <div class="carousel__slide-header">
+                                        <h2>PAINT <span class="circle__outer"><span
+                                                    class="circle__inner">YOUR</span></span> PIXTURE</h2>
+                                    </div>
+                                    <div class="carousel__slide-content_main">
+                                        <h3>Humble Beginnings</h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Earum praesentium, accusamus natus,
+                                            quibusdam explicabo dolorem quod</p>
+                                    </div>
+                                </div>
+                                <div class="carousel__slide-date">
+                                    <p>April 10th, 2109</p>
+                                </div>
+                            </li>
+                            <li class="carousel__slide">
+                                <img src="assets/images/slider-1-bg-2.jpg" alt="slider 2">
+                                <div class="slide-overlay"></div>
+                                <div class="carousel__slide-content">
+                                    <div class="carousel__slide-header">
+                                        <h2>PAINT <span class="circle__outer"><span
+                                                    class="circle__inner">YOUR</span></span> PIXTURE</h2>
+                                    </div>
+                                    <div class="carousel__slide-content_main">
+                                        <h3>Soaring Journey</h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Earum praesentium, accusamus natus,
+                                            quibusdam explicabo dolorem quod</p>
+                                    </div>
+                                </div>
+                                <div class="carousel__slide-date">
+                                    <p>April 10th, 2109</p>
+                                </div>
+                            </li>
+                            <li class="carousel__slide">
+                                <img src="assets/images/slider-1-bg-3.jpg" alt="slider 3">
+                                <div class="slide-overlay"></div>
+                                <div class="carousel__slide-content">
+                                    <div class="carousel__slide-header">
+                                        <h2>PAINT <span class="circle__outer"><span
+                                                    class="circle__inner">YOUR</span></span> PIXTURE</h2>
+                                    </div>
+                                    <div class="carousel__slide-content_main">
+                                        <h3>Fulfilling Endings</h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Earum praesentium, accusamus natus,
+                                            quibusdam explicabo dolorem quod</p>
+                                    </div>
+                                </div>
+                                <div class="carousel__slide-date">
+                                    <p>April 10th, 2109</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="carousel__button right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <div class="carousel__dots">
+                    <button class="carousel__dot active"></button>
+                    <button class="carousel__dot"></button>
+                    <button class="carousel__dot"></button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- CARDS CAROUSEL 1 -->
+        <div class="carousel-blocks-container carousel-blocks-container-1">
+            <h2>Pictures Worth Seeing</h2>
+            <div class="carousel-blocks">
+                <button class="carousel__button left carousel-blocks__button">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="carousel-blocks__main">
+                    <div class="carousel-blocks__content">
+                        <ul class="carousel-blocks__track">
+                            <li class="carousel-blocks__slide active">
+                                <img src="assets/images/carousel-bg-1.jpg" alt="slider 1">
+                                <div class="slide-overlay carousel-blocks__overlay"></div>
+                                <div class="carousel-blocks__hearts">
+                                    <p><span><i class="fas fa-heart"></i></span> 123</p>
+                                </div>
+                                <div class="carousel-blocks__triangle"></div>
+                                <div class="carousel-blocks__slide-content">
+                                    <h3>Decayed</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Earum praesentium, accusamus natus,
+                                        quibusdam explicabo dolorem quod</p>
+                                </div>
+                                <div class="carousel-blocks__slide-footer">
+                                    <div class="carousel-blocks__slide-footer_comments">
+                                        <i class="fas fa-comment-alt"></i>
+                                        <span>374 comments</span>
+                                    </div>
+                                    <div class="carousel-blocks__slide-footer_dots">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="carousel-blocks__slide ">
+                                <img src="assets/images/carousel-bg-2.jpg" alt="slider 1">
+                                <div class="slide-overlay carousel-blocks__overlay"></div>
+                                <div class="carousel-blocks__hearts">
+                                    <p><span><i class="fas fa-heart"></i></span> 123</p>
+                                </div>
+                                <div class="carousel-blocks__triangle"></div>
+                                <div class="carousel-blocks__slide-content">
+                                    <h3>Bliss Texture</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Earum praesentium, accusamus natus,
+                                        quibusdam explicabo dolorem quod</p>
+                                </div>
+                                <div class="carousel-blocks__slide-footer">
+                                    <div class="carousel-blocks__slide-footer_comments">
+                                        <i class="fas fa-comment-alt"></i>
+                                        <span>374 comments</span>
+                                    </div>
+                                    <div class="carousel-blocks__slide-footer_dots">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="carousel-blocks__slide ">
+                                <img src="assets/images/carousel-bg-1.jpg" alt="slider 1">
+                                <div class="slide-overlay carousel-blocks__overlay"></div>
+                                <div class="carousel-blocks__hearts">
+                                    <p><span><i class="fas fa-heart"></i></span> 123</p>
+                                </div>
+                                <div class="carousel-blocks__triangle"></div>
+                                <div class="carousel-blocks__slide-content">
+                                    <h3>Decayed</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Earum praesentium, accusamus natus,
+                                        quibusdam explicabo dolorem quod</p>
+                                </div>
+                                <div class="carousel-blocks__slide-footer">
+                                    <div class="carousel-blocks__slide-footer_comments">
+                                        <i class="fas fa-comment-alt"></i>
+                                        <span>374 comments</span>
+                                    </div>
+                                    <div class="carousel-blocks__slide-footer_dots">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="carousel-blocks__slide ">
+                                <img src="assets/images/carousel-bg-2.jpg" alt="slider 1">
+                                <div class="slide-overlay carousel-blocks__overlay"></div>
+                                <div class="carousel-blocks__hearts">
+                                    <p><span><i class="fas fa-heart"></i></span> 123</p>
+                                </div>
+                                <div class="carousel-blocks__triangle"></div>
+                                <div class="carousel-blocks__slide-content">
+                                    <h3>Bliss Texture</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Earum praesentium, accusamus natus,
+                                        quibusdam explicabo dolorem quod</p>
+                                </div>
+                                <div class="carousel-blocks__slide-footer">
+                                    <div class="carousel-blocks__slide-footer_comments">
+                                        <i class="fas fa-comment-alt"></i>
+                                        <span>374 comments</span>
+                                    </div>
+                                    <div class="carousel-blocks__slide-footer_dots">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="carousel-blocks__slide ">
+                                <img src="assets/images/carousel-bg-1.jpg" alt="slider 1">
+                                <div class="slide-overlay carousel-blocks__overlay"></div>
+                                <div class="carousel-blocks__hearts">
+                                    <p><span><i class="fas fa-heart"></i></span> 123</p>
+                                </div>
+                                <div class="carousel-blocks__triangle"></div>
+                                <div class="carousel-blocks__slide-content">
+                                    <h3>Decayed</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Earum praesentium, accusamus natus,
+                                        quibusdam explicabo dolorem quod</p>
+                                </div>
+                                <div class="carousel-blocks__slide-footer">
+                                    <div class="carousel-blocks__slide-footer_comments">
+                                        <i class="fas fa-comment-alt"></i>
+                                        <span>374 comments</span>
+                                    </div>
+                                    <div class="carousel-blocks__slide-footer_dots">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="carousel-blocks__slide ">
+                                <img src="assets/images/carousel-bg-2.jpg" alt="slider 1">
+                                <div class="slide-overlay carousel-blocks__overlay"></div>
+                                <div class="carousel-blocks__hearts">
+                                    <p><span><i class="fas fa-heart"></i></span> 123</p>
+                                </div>
+                                <div class="carousel-blocks__triangle"></div>
+                                <div class="carousel-blocks__slide-content">
+                                    <h3>Decayed</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Earum praesentium, accusamus natus,
+                                        quibusdam explicabo dolorem quod</p>
+                                </div>
+                                <div class="carousel-blocks__slide-footer">
+                                    <div class="carousel-blocks__slide-footer_comments">
+                                        <i class="fas fa-comment-alt"></i>
+                                        <span>374 comments</span>
+                                    </div>
+                                    <div class="carousel-blocks__slide-footer_dots">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="carousel__button right carousel-blocks__button">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+            </div>
+        </div>
+
+
+        <!-- BIG IMAGE SLIDER 2 -->
+        <div class="pixture pixture-2">
+            <div class="side-note">
+                <div class="side-note__text">
+                    <p>PAINT THE POWER <span>&nbsp;BLAZ ROBAR</span></p>
+                </div>
+                <div class="side-note__arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="carousel carousel-2">
+                <button class="carousel__button left">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="carousel_main">
+                    <div class="carousel__content">
+                        <ul class="carousel__track">
+                            <li class="carousel__slide active">
+                                <img src="assets/images/slider-2-bg-1.jpg" alt="slider 1">
+                                <div class="slide-overlay"></div>
+                                <div class="carousel__slide-content">
+                                    <div class="carousel__slide-header">
+                                        <h2>IT'S YOUR <span class="circle__outer"><span class="circle__inner"> ONLY
+                                                </span></span> PASSION</h2>
+                                    </div>
+                                    <div class="carousel__slide-content_main">
+                                        <h3>Texture makes art</h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Earum praesentium, accusamus natus,
+                                            quibusdam explicabo dolorem quod</p>
+                                    </div>
+                                </div>
+                                <div class="carousel__slide-date">
+                                    <p>April 10th, 2109</p>
+                                </div>
+                            </li>
+                            <li class="carousel__slide">
+                                <img src="assets/images/slider-2-bg-2.jpg" alt="slider 2">
+                                <div class="slide-overlay"></div>
+                                <div class="carousel__slide-content">
+                                    <div class="carousel__slide-header">
+                                        <h2>IT'S YOUR<span class="circle__outer"><span
+                                                    class="circle__inner">ONLY</span></span> PASSION</h2>
+                                    </div>
+                                    <div class="carousel__slide-content_main">
+                                        <h3>Texture makes art</h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Earum praesentium, accusamus natus,
+                                            quibusdam explicabo dolorem quod</p>
+                                    </div>
+                                </div>
+                                <div class="carousel__slide-date">
+                                    <p>April 10th, 2109</p>
+                                </div>
+                            </li>
+                            <li class="carousel__slide">
+                                <img src="assets/images/slider-2-bg-3.jpg" alt="slider 3">
+                                <div class="slide-overlay"></div>
+                                <div class="carousel__slide-content">
+                                    <div class="carousel__slide-header">
+                                        <h2>IT'S YOUR<span class="circle__outer"><span
+                                                    class="circle__inner">ONLY</span></span> PASSION</h2>
+                                    </div>
+                                    <div class="carousel__slide-content_main">
+                                        <h3>Texture makes art</h3>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Earum praesentium, accusamus natus,
+                                            quibusdam explicabo dolorem quod</p>
+                                    </div>
+                                </div>
+                                <div class="carousel__slide-date">
+                                    <p>April 10th, 2109</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="carousel__button right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <div class="carousel__dots">
+                    <button class="carousel__dot active"></button>
+                    <button class="carousel__dot"></button>
+                    <button class="carousel__dot"></button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 2 COLUMN TEXT -->
+        <div class="text-section">
+            <div class="side-note">
+                <div class="side-note__text">
+                    <p>January 2019</p>
+                </div>
+            </div>
+            <div class="text-section__main">
+                <div class="columns columns-1">
+                    <div class="columns__left">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris. Duis aute irure dolor in reprehenderit
+                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            upidatat non proident, sunt inculpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.
+                        </p>
+                    </div>
+                    <div class="columns__right">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris. Duis aute irure dolor in reprehenderit
+                            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            upidatat non proident, sunt inculpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- CARDS CAROUSEL 2 -->
+        <div class="carousel-blocks-container carousel-blocks-container-2">
+            <h2>Articles Worth Reading</h2>
+            <div class="carousel-blocks">
+                <button class="carousel__button left carousel-blocks__button">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="carousel-blocks__main">
+                    <div class="carousel-blocks__content">
+                        <ul class="carousel-blocks__track">
+                            <li class="carousel-blocks__slide active">
+                                <img src="assets/images/carousel-bg-3.jpg" alt="slider 1">
+                                <div class="slide-overlay carousel-blocks__overlay"></div>
+                                <div class="carousel-blocks__hearts">
+                                    <p><span><i class="fas fa-heart"></i></span> 123</p>
+                                </div>
+                                <div class="carousel-blocks__triangle"></div>
+                                <div class="carousel-blocks__slide-content">
+                                    <h3>Decayed</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Earum praesentium, accusamus natus,
+                                        quibusdam explicabo dolorem quod</p>
+                                </div>
+                                <div class="carousel-blocks__slide-footer">
+                                    <div class="carousel-blocks__slide-footer_comments">
+                                        <i class="fas fa-comment-alt"></i>
+                                        <span>374 comments</span>
+                                    </div>
+                                    <div class="carousel-blocks__slide-footer_dots">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="carousel-blocks__slide ">
+                                <img src="assets/images/carousel-bg-4.jpg" alt="slider 1">
+                                <div class="slide-overlay carousel-blocks__overlay"></div>
+                                <div class="carousel-blocks__hearts">
+                                    <p><span><i class="fas fa-heart"></i></span> 123</p>
+                                </div>
+                                <div class="carousel-blocks__triangle"></div>
+                                <div class="carousel-blocks__slide-content">
+                                    <h3>Bliss Texture</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Earum praesentium, accusamus natus,
+                                        quibusdam explicabo dolorem quod</p>
+                                </div>
+                                <div class="carousel-blocks__slide-footer">
+                                    <div class="carousel-blocks__slide-footer_comments">
+                                        <i class="fas fa-comment-alt"></i>
+                                        <span>374 comments</span>
+                                    </div>
+                                    <div class="carousel-blocks__slide-footer_dots">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="carousel-blocks__slide ">
+                                <img src="assets/images/carousel-bg-3.jpg" alt="slider 1">
+                                <div class="slide-overlay carousel-blocks__overlay"></div>
+                                <div class="carousel-blocks__hearts">
+                                    <p><span><i class="fas fa-heart"></i></span> 123</p>
+                                </div>
+                                <div class="carousel-blocks__triangle"></div>
+                                <div class="carousel-blocks__slide-content">
+                                    <h3>Decayed</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Earum praesentium, accusamus natus,
+                                        quibusdam explicabo dolorem quod</p>
+                                </div>
+                                <div class="carousel-blocks__slide-footer">
+                                    <div class="carousel-blocks__slide-footer_comments">
+                                        <i class="fas fa-comment-alt"></i>
+                                        <span>374 comments</span>
+                                    </div>
+                                    <div class="carousel-blocks__slide-footer_dots">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="carousel-blocks__slide ">
+                                <img src="assets/images/carousel-bg-4.jpg" alt="slider 1">
+                                <div class="slide-overlay carousel-blocks__overlay"></div>
+                                <div class="carousel-blocks__hearts">
+                                    <p><span><i class="fas fa-heart"></i></span> 123</p>
+                                </div>
+                                <div class="carousel-blocks__triangle"></div>
+                                <div class="carousel-blocks__slide-content">
+                                    <h3>Bliss Texture</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Earum praesentium, accusamus natus,
+                                        quibusdam explicabo dolorem quod</p>
+                                </div>
+                                <div class="carousel-blocks__slide-footer">
+                                    <div class="carousel-blocks__slide-footer_comments">
+                                        <i class="fas fa-comment-alt"></i>
+                                        <span>374 comments</span>
+                                    </div>
+                                    <div class="carousel-blocks__slide-footer_dots">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="carousel-blocks__slide ">
+                                <img src="assets/images/carousel-bg-3.jpg" alt="slider 1">
+                                <div class="slide-overlay carousel-blocks__overlay"></div>
+                                <div class="carousel-blocks__hearts">
+                                    <p><span><i class="fas fa-heart"></i></span> 123</p>
+                                </div>
+                                <div class="carousel-blocks__triangle"></div>
+                                <div class="carousel-blocks__slide-content">
+                                    <h3>Decayed</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Earum praesentium, accusamus natus,
+                                        quibusdam explicabo dolorem quod</p>
+                                </div>
+                                <div class="carousel-blocks__slide-footer">
+                                    <div class="carousel-blocks__slide-footer_comments">
+                                        <i class="fas fa-comment-alt"></i>
+                                        <span>374 comments</span>
+                                    </div>
+                                    <div class="carousel-blocks__slide-footer_dots">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="carousel-blocks__slide ">
+                                <img src="assets/images/carousel-bg-4.jpg" alt="slider 1">
+                                <div class="slide-overlay carousel-blocks__overlay"></div>
+                                <div class="carousel-blocks__hearts">
+                                    <p><span><i class="fas fa-heart"></i></span> 123</p>
+                                </div>
+                                <div class="carousel-blocks__triangle"></div>
+                                <div class="carousel-blocks__slide-content">
+                                    <h3>Decayed</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Earum praesentium, accusamus natus,
+                                        quibusdam explicabo dolorem quod</p>
+                                </div>
+                                <div class="carousel-blocks__slide-footer">
+                                    <div class="carousel-blocks__slide-footer_comments">
+                                        <i class="fas fa-comment-alt"></i>
+                                        <span>374 comments</span>
+                                    </div>
+                                    <div class="carousel-blocks__slide-footer_dots">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="carousel__button right carousel-blocks__button">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+            </div>
+        </div>
+
+
+        <!-- 4 COLUMN TEXT -->
+        <div class="text-section text-section-2">
+            <div class="side-note">
+                <div class="side-note__text">
+                    <p>January 2019</p>
+                </div>
+            </div>
+            <div class="text-section__main">
+                <div class="columns columns-2">
+                    <div class="columns__one">
+                        <h3>Start-Up Resources</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                        </p>
+                    </div>
+                    <div class="columns__two">
+                        <h3>Training & Funding</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, dignissimos voluptatem qui possimus!
+                        </p>
+                    </div>
+                    <div class="columns__three">
+                        <h3>Connect</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis consectetur laboriosam,
+                            provident quaerat praesentium sapiente
+                        </p>
+                    </div>
+                    <div class="columns__four">
+                        <h3>Training & Funding</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TEXTURE BY -->
+        <div class="texture">
+            <div class="texture__content">
+                <h4>TEXTURES BY</h4>
+                <h2>Jordan Hetzer</h2>
+                <p>Lorem ipsum dolor sit amet conctetur adicing elit. Aspernatur explicabo sint consequatur in</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <div class="footer">
+            <div class="footer__about">
+                <h4>About</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat nihil rerum quis, reprehenderit
+                    molestias exercitationem.</p>
+            </div>
+
+            <div class="footer__history">
+                <h4>History</h4>
+                <ul>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Downloads & Updates</a></li>
+                    <li><a href="#">Manuals</a></li>
+                    <li><a href="#">Tech Specs</a></li>
+                    <li><a href="#">System Status</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__contact">
+                <h4>Contact</h4>
+                <ul>
+                    <li>Apple Store (Education Institution)</li>
+                    <li>1300-551-927</li>
+                    <li>Apple Store (Small Business)</li>
+                    <li>1300-456-890</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo placeat consectetur, labore enim
+                accusantium expedita iusto! Adipisci eaque beatae, expedita dolorum nulla est in perspiciatis magnam
+                reprehenderit deleniti, minus dolorem.</p>
+        </div>
+
+    </footer>
+
+
+
+    <script type="module" src="script.js"></script>
+</body>
+
+</html>
