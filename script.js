@@ -22,6 +22,19 @@ import { SmallCarousel, BigCarousel } from './slider.js'
     })
 
 
+    // Down Arrows in side bars next to big carousels
+    const downArrows = document.querySelectorAll(".side-note__arrow")
+    const downTargets = [document.querySelector(".pixture-2"), document.querySelector(".text-section-2")]
+    downArrows.forEach((arrow, index) => {
+        arrow.addEventListener("click", () => {
+            const targetTop = downTargets[index].getBoundingClientRect().top
+            window.scrollBy(0, targetTop - 20);      // Scroll targetTop down
+
+            console.log("clicked");
+        })
+    })
+
+
     // Carousels
     const bigCarousels = document.querySelectorAll(".carousel")
     bigCarousels.forEach(carousel => new BigCarousel(carousel).execute())

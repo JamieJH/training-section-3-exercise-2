@@ -3,7 +3,6 @@
     --text-white: #ffffff;
     --text-footer-headers: #0d4363;
     --text-footer-footnote: #5c5b61;
-
     /* backgrounds */
     --bg-body: #140328;
     /* --bg-nav-transparent: #9c3c2fc4; 130327c4
@@ -13,30 +12,60 @@
     --bg-nav: #1e0a36;
     --bg-nav-hover-transparent: #280847a9;
     --bg-nav-hover: #130327;
-
     /* transition */
     --transition-short: all .3s ease-in-out;
     --transition-normal: all .5s ease-in-out;
     --transition-long: all 1s ease-in-out;
-
     /* z-index */
     --z-nav-toggler: 999;
     --z-nav-bar: 500;
     --z-overlay: 400;
     --z-carousel-controls: 300;
-
     /* widths */
     --nav-width: 200px;
     --side-width: 50px;
-    --content-width-xl: 1200px;
-
-    /* left */
-    --left-sm: 30px;
-    --left-md: 50px;
-    --left-lg: 100px;
-
+    --content-side-width: calc(100% - var(--side-width));
+    /* carousel content left */
+    --left: 30px;
     /* caousel img height */
-    --slide-img-height-sm: 160px;
-    --slide-img-height-md: 170px
+    --slide-img-height: 160px;
+    /* h2 circle in middle widths and font sizes */
+    --carousel-circle-outer: 60px;
+    --carousel-circle-inner: calc(var(--carousel-circle-outer) - 15px);
+    --carousel-circle-font-sz: 23px;
+}
+
+@media(min-width: 481px) {
+    :root {
+        --side-width: 60px;
+        --left: 50px;
+        --slide-img-height: 170px;
+        --carousel-circle-outer: 70px;
+        --carousel-circle-font-sz: 26px;
+    }
+}
+
+@media(min-width: 768px) {
+    :root {
+        --side-width: 60px;
+        --carousel-circle-outer: 90px;
+        --carousel-circle-font-sz: 32px;
+    }
+}
+
+@media(min-width: 992px) {
+    :root {
+        --side-width: 70px;
+        --left: 100px;
+        --carousel-circle-outer: 120px;
+        --carousel-circle-inner: 100px;
+        --carousel-circle-font-sz: 44px;
+    }
+}
+
+@media(min-width: 1600px) {
+    :root {
+        --content-width: 1200px;
+    }
 
 }

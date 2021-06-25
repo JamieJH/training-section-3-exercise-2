@@ -69,6 +69,8 @@ class SmallCarousel {
         stopEvents.forEach(event => {
             this.track.addEventListener(event, () => {
                 isMouseDown = false
+                // enable text select (text highlighting) after dragging mouse
+                document.body.style.userSelect = "auto"
             })
         })
 
@@ -78,11 +80,15 @@ class SmallCarousel {
                     mousePosX = e.clientX || e.changedTouches[0].clientX
                     const newLeft = mousePosX + offsetX
 
+                    // disable text select (text highlighting) when dragging mouse
+                    document.body.style.userSelect = "none"
+
                     // change position
                     if (newLeft <= 0 && newLeft > -this.trackWidth + this.itemWidth / 2) {
                         this.track.style.left = newLeft + 'px'
                         this.toggleButtons()
                     }
+
                 }
             })
         })
