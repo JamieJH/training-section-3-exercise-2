@@ -233,6 +233,7 @@ header.open .toggler-container {
 
 footer {
     padding: 30px;
+    height: -moz-fit-content;
     height: fit-content;
 }
 
@@ -360,6 +361,7 @@ ul {
     }
     .texture__content {
         left: auto;
+        width: -moz-fit-content;
         width: fit-content;
         right: 30px;
         bottom: auto;
@@ -423,6 +425,7 @@ ul {
         width: 200px;
     }
     .footer__contact {
+        width: -moz-fit-content;
         width: fit-content;
     }
     /* ***************************************************************** */

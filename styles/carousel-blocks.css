@@ -28,6 +28,8 @@
     list-style: none;
     position: relative;
     display: flex;
+    width: -moz-fit-content;
+    height: -moz-fit-content;
     width: fit-content;
     height: fit-content;
     padding-left: 20px;

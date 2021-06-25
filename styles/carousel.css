@@ -279,6 +279,7 @@
     }
     .carousel__slide-date {
         display: block;
+        height: -moz-fit-content;
         height: fit-content;
         position: absolute;
         bottom: 30px;
