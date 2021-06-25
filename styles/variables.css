@@ -23,12 +23,14 @@
     --z-carousel-controls: 300;
     /* widths */
     --nav-width: 200px;
-    --side-width: 50px;
+    --side-width: 40px;
     --content-side-width: calc(100% - var(--side-width));
+    /* heights */
+    --small-carousel-height: 450px;
     /* carousel content left */
     --left: 30px;
     /* caousel img height */
-    --slide-img-height: 160px;
+    --slide-img-height: 180px;
     /* h2 circle in middle widths and font sizes */
     --carousel-circle-outer: 60px;
     --carousel-circle-inner: calc(var(--carousel-circle-outer) - 15px);
@@ -39,9 +41,10 @@
     :root {
         --side-width: 60px;
         --left: 50px;
-        --slide-img-height: 170px;
+        --slide-img-height: 200px;
         --carousel-circle-outer: 70px;
         --carousel-circle-font-sz: 26px;
+        --small-carousel-height: 500px;
     }
 }
 

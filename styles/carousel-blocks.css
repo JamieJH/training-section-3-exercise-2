@@ -1,3 +1,7 @@
+.carousel-blocks {
+    position: relative;
+}
+
 .carousel-blocks-container {
     margin: 20px 0;
 }
@@ -14,36 +18,33 @@
     position: relative;
     overflow: hidden;
 }
-
-/* .carousel-blocks-container-2 {
-    display: none;
-} */
-
-.carousel-blocks {
-    position: relative;
+.carousel-blocks__overlay {
+    height: 500px;
+    position: absolute;
+    width: 300px;
+    /* background-color: white; */
 }
-
 .carousel-blocks__track {
-    margin: 0;
+    margin: 0 0 0 var(--side-width);
     list-style: none;
     position: relative;
-    display: flex;
-    width: -moz-fit-content;
+    /* display: flex; */
+    /* width: -moz-fit-content; */
     height: -moz-fit-content;
-    width: fit-content;
-    height: fit-content;
-    padding-left: 20px;
+    /* width: fit-content; */
+    height: var(--small-carousel-height);
+    /* padding-left: 20px; */
     transition: var(--transition-normal);
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 .carousel-blocks__slide {
-    position: relative;
-    width: 270px;
-    margin-right: 30px;
+    /* position: relative; */
+    position: absolute;
+    width: 300px;
+    /* margin-right: 30px; */
     background-color: #ffffff;
-    height: 400px;
+    height: 100%;
     color: #000000;
 }
 
@@ -54,7 +55,7 @@
 
 .carousel-blocks__hearts {
     position: absolute;
-    top: calc(var(--slide-img-height) - 20px);
+    top: calc(var(--slide-img-height) - 25px);
     font-size: 0.8rem;
     right: 20px;
     font-weight: 600;
@@ -92,7 +93,10 @@
     transform: translateY(-50%);
 }
 
-.slide-overlay.carousel-blocks__overlay {
+.carousel-blocks__slide-overlay {
+    position: absolute;
+    width: 100%;
+    top: 0;
     height: var(--slide-img-height);
     background: linear-gradient(180deg, #0a478750 0%, #0a478760 65%, #0a478790 100%);
 }
@@ -149,7 +153,7 @@
 
 @media(min-width: 481px) {
     .carousel-blocks__slide {
-        width: 300px;
+        width: 380px;
     }
     .carousel-blocks__track {
         padding-left: var(--side-width);
@@ -175,7 +179,7 @@
 }
 
 @media(min-width: 992px) { 
-    .carousel-blocks-container>h2 {
+    .carousel-blocks-container>h2, .carousel-blocks__track {
         margin-left: calc(var(--left) + var(--side-width));
     }
 }
@@ -185,6 +189,10 @@
         width: calc(var(--content-width) - var(--side-width));
         margin: 0 auto;
         padding-left: 0;
+    }
+
+    .carousel-blocks__track {
+        margin-left: calc((100% - var(--content-width) + var(--side-width))/2);
     }
     
 }
