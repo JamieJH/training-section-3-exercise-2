@@ -10,7 +10,7 @@ class SmallCarousel {
     }
 
     // move the length of 1 slide width
-    slideCarousel(isPrev) {
+    slideUsingBtns(isPrev) {
         let changeWidth = this.itemWidth * (isPrev || -1)
 
         // when drag near the start, then press previous button
@@ -49,10 +49,10 @@ class SmallCarousel {
         const stopEvents = ["mouseup", "mouseleave", "touchend", "touchcancel"]
 
         // next button
-        this.nextBtn.addEventListener("click", () => { this.slideCarousel(false) })
+        this.nextBtn.addEventListener("click", () => { this.slideUsingBtns(false) })
 
         // prev button
-        this.prevBtn.addEventListener("click", () => { this.slideCarousel(true) })
+        this.prevBtn.addEventListener("click", () => { this.slideUsingBtns(true) })
 
         startEvents.forEach(event => {
             this.track.addEventListener(event, (e) => {
@@ -74,6 +74,7 @@ class SmallCarousel {
             })
         })
 
+        // Slide using mouse drag or phone swipe
         moveEvents.forEach(event => {
             this.track.addEventListener(event, (e) => {
                 if (isMouseDown) {
@@ -83,21 +84,23 @@ class SmallCarousel {
                     // disable text select (text highlighting) when dragging mouse
                     document.body.style.userSelect = "none"
 
-                    // change position
-                    if (newLeft <= 0 && newLeft > -this.trackWidth + this.itemWidth / 2) {
+                    // direction < 0 means drag left and vice versa
+                    const direction = (newLeft - this.track.offsetLeft);
+
+                    // only moves if, 
+                    // - the newLeft <= 0 (so track cannot be moved right when the first slide is reached)
+                    // - the last slide has not reached the middle of the screen
+                    // - when last slide reached the middle of the screen, but then user enlarge the screen to move right
+                    if (newLeft <= 0 &&
+                        ((this.trackWidth + newLeft > window.innerWidth / 2) ||
+                            (this.trackWidth + newLeft < window.innerWidth / 2) && direction > 0)) {
                         this.track.style.left = newLeft + 'px'
                         this.toggleButtons()
                     }
-
                 }
             })
         })
-
-
-
     }
-
-
 }
 
 class BigCarousel {
@@ -135,7 +138,7 @@ class BigCarousel {
 
 
     // re-arrange slide function 
-    moveToSlideBig(currentSlide, targetSlide) {
+    moveToSlide(currentSlide, targetSlide) {
         // move to the target slide
         this.track.style.transform = "translateX(-" + targetSlide.style.left + ")";
 
@@ -144,7 +147,7 @@ class BigCarousel {
         targetSlide.classList.add("active")
     }
 
-    slideBigCarousel(isNext) {
+    slideUsingBtns(isNext) {
         const currentSlide = this.track.querySelector(".active")
         let siblingSlide = isNext ? currentSlide.nextElementSibling : currentSlide.previousElementSibling
 
@@ -154,7 +157,7 @@ class BigCarousel {
             siblingSlide = isNext ? this.track.querySelector("li:first-child") : this.track.querySelector("li:last-child")
         }
 
-        this.moveToSlideBig(currentSlide, siblingSlide)
+        this.moveToSlide(currentSlide, siblingSlide)
         this.updateIndicator(currentSlide, isNext, null, null)
     }
 
@@ -166,10 +169,10 @@ class BigCarousel {
         })
 
         // next button click
-        this.nextBtn.addEventListener("click", () => this.slideBigCarousel(true))
+        this.nextBtn.addEventListener("click", () => this.slideUsingBtns(true))
 
         // prev button click
-        this.prevBtn.addEventListener("click", () => this.slideBigCarousel(false))
+        this.prevBtn.addEventListener("click", () => this.slideUsingBtns(false))
 
         // when user click on a dot
         this.indicator.addEventListener("click", (e) => {
@@ -182,13 +185,13 @@ class BigCarousel {
                 const btnIndex = this.dots.findIndex(dot => dot === clickedDot)
                 const targetSlide = this.slides[btnIndex]
 
-                this.moveToSlideBig(currentSlide, targetSlide)
+                this.moveToSlide(currentSlide, targetSlide)
                 this.updateIndicator(null, null, currentDot, clickedDot)
             }
         })
 
         // auto change slide every 5s
-        setInterval(() => this.slideBigCarousel(true), 5000)
+        setInterval(() => this.slideUsingBtns(true), 5000)
     }
 }
 
