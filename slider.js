@@ -5,54 +5,58 @@ class SmallCarousel {
         this.slideItems = Array.from(this.track.children)           // number of slides
         this.prevBtn = carouselBlock.querySelector(".carousel-blocks__button.left")
         this.nextBtn = carouselBlock.querySelector(".carousel-blocks__button.right")
-        this.itemWidth = this.slideItems[0].getBoundingClientRect().width
-        this.trackWidth = this.itemWidth * this.slideItems.length
+        this.currentItemWidth = this.slideItems[0].getBoundingClientRect().width
     }
 
-    // move the length of 1 slide width
-    slideUsingBtns(isPrev) {
-        let changeWidth = this.itemWidth * (isPrev || -1)
-
-        // when drag near the start, then press previous button
-        if (this.track.offsetLeft + changeWidth > 0) {
-            this.track.style.left = "0";
-        }
-        // when drag near the end, then press next button
-        else if (this.track.offsetLeft + changeWidth < -this.trackWidth + this.itemWidth / 2) {
-            this.track.style.left = -this.trackWidth + this.itemWidth / 2 + "px";
-        }
-        else {
-            this.track.style.left = this.track.offsetLeft + changeWidth + "px";
-        }
-        setTimeout(() => this.toggleButtons(), 300)
+    // Get one slide item width and the track width (they change depends on device width)
+    getWidths() {
+        const tile = this.slideItems[0]
+        // console.log(tile.style.margin);
+        const itemWidth = tile.getBoundingClientRect().width;
+        const trackWidth = itemWidth * this.slideItems.length
+        return { itemWidth, trackWidth }
     }
 
-    // hide next or prev button if there's no next or prev slide
-    toggleButtons() {
-        this.prevBtn.classList.remove("hidden")
-        this.nextBtn.classList.remove("hidden")
+    // on small screen (max 768), only slide right if there's at least 1 slide left; 
+    // on medium ______(max 1200)______________________________________ 2 __________
+    // on x-large _______(min 1300)______________________________________ 3 __________ 
+    getAvailableSlides() {
+        const viewWidth = window.innerWidth 
+        return viewWidth < 768 ? 1 : (viewWidth >= 1200 ? 3 : 2)
+    }
 
-        if (this.track.offsetLeft >= -10) {
-            this.prevBtn.classList.add("hidden")
-        }
-        else if (this.track.offsetLeft - window.innerWidth < -this.trackWidth) {
-            this.nextBtn.classList.add("hidden")
+    // move the length of 1 slide
+    moveCarousel(isPrev) {
+        const active = this.track.querySelector(".active")
+        const target = isPrev ? active.previousElementSibling : active.nextElementSibling
+
+        // only slide right if there are at least 3 slides available
+        const nextSiblings = this.track.querySelectorAll("li.active ~ li")
+        const availableSlides = this.getAvailableSlides()
+
+        if ((isPrev && target) || (!isPrev && nextSiblings.length >= availableSlides)) {
+            this.track.style.left = -target.offsetLeft + 'px'
+            // set the target class to active
+            active.classList.remove("active")
+            target.classList.add("active")
         }
     }
 
     execute() {
-        let offsetX = 0
-        let mousePosX;
+        let startPoint = 0
+        let endPoint = 0
         let isMouseDown = false;
+        let willSlide = false;
         const startEvents = ["mousedown", "touchstart"]
         const moveEvents = ["mousemove", "touchmove"]
         const stopEvents = ["mouseup", "mouseleave", "touchend", "touchcancel"]
 
+  
         // next button
-        this.nextBtn.addEventListener("click", () => { this.slideUsingBtns(false) })
+        this.nextBtn.addEventListener("click", () => { this.moveCarousel(false) })
 
         // prev button
-        this.prevBtn.addEventListener("click", () => { this.slideUsingBtns(true) })
+        this.prevBtn.addEventListener("click", () => { this.moveCarousel(true) })
 
         startEvents.forEach(event => {
             this.track.addEventListener(event, (e) => {
@@ -61,14 +65,27 @@ class SmallCarousel {
                 if (node !== "P" && node !== "H3" && node !== "I" && node !== "SPAN") {
                     isMouseDown = true
                     // e.clientX for mouse events, the other for touch events
-                    offsetX = this.track.offsetLeft - (e.clientX || e.changedTouches[0].clientX)
+                    startPoint = e.clientX || e.changedTouches[0].clientX
                 }
             })
         })
 
         stopEvents.forEach(event => {
-            this.track.addEventListener(event, () => {
+            // target the parent container because the track width (ul) does not cover all tiles
+            this.track.parentElement.addEventListener(event, (e) => {
+                if (isMouseDown && willSlide) {
+                    // get the point where user stop dragging/swiping
+                    endPoint = e.clientX || e.changedTouches[0].clientX
+
+                    // if mouse end point < start point, then user swiped/draged left (previous)
+                    // only move if user drag at least 50 px
+                    if (Math.abs(endPoint - startPoint) >= 50) {
+                        this.moveCarousel(endPoint > startPoint)
+                    }
+                }
+
                 isMouseDown = false
+                willSlide = false
                 // enable text select (text highlighting) after dragging mouse
                 document.body.style.userSelect = "auto"
             })
@@ -76,27 +93,12 @@ class SmallCarousel {
 
         // Slide using mouse drag or phone swipe
         moveEvents.forEach(event => {
-            this.track.addEventListener(event, (e) => {
+            this.track.addEventListener(event, () => {
                 if (isMouseDown) {
-                    mousePosX = e.clientX || e.changedTouches[0].clientX
-                    const newLeft = mousePosX + offsetX
+                    willSlide = true
 
                     // disable text select (text highlighting) when dragging mouse
                     document.body.style.userSelect = "none"
-
-                    // direction < 0 means drag left and vice versa
-                    const direction = (newLeft - this.track.offsetLeft);
-
-                    // only moves if, 
-                    // - the newLeft <= 0 (so track cannot be moved right when the first slide is reached)
-                    // - the last slide has not reached the middle of the screen
-                    // - when last slide reached the middle of the screen, but then user enlarge the screen to move right
-                    if (newLeft <= 0 &&
-                        ((this.trackWidth + newLeft > window.innerWidth / 2) ||
-                            (this.trackWidth + newLeft < window.innerWidth / 2) && direction > 0)) {
-                        this.track.style.left = newLeft + 'px'
-                        this.toggleButtons()
-                    }
                 }
             })
         })
@@ -148,6 +150,9 @@ class BigCarousel {
     }
 
     slideUsingBtns(isNext) {
+        // Cancel auto slide after change slide using btns
+        this.cancelAutoSlide()
+
         const currentSlide = this.track.querySelector(".active")
         let siblingSlide = isNext ? currentSlide.nextElementSibling : currentSlide.previousElementSibling
 
@@ -159,6 +164,17 @@ class BigCarousel {
 
         this.moveToSlide(currentSlide, siblingSlide)
         this.updateIndicator(currentSlide, isNext, null, null)
+
+        // Set auto slide after change slide using btns
+        this.setAutoSlide()
+    }
+
+    setAutoSlide() {
+        this.intervalId = setInterval(() => this.slideUsingBtns(true), 5000)
+    }
+
+    cancelAutoSlide() {
+        clearInterval(this.intervalId)
     }
 
 
@@ -190,8 +206,7 @@ class BigCarousel {
             }
         })
 
-        // auto change slide every 5s
-        setInterval(() => this.slideUsingBtns(true), 5000)
+        this.setAutoSlide()
     }
 }
 

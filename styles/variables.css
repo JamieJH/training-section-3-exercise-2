@@ -23,25 +23,33 @@
     --z-carousel-controls: 300;
     /* widths */
     --nav-width: 200px;
-    --side-width: 50px;
+    --side-width: 40px;
     --content-side-width: calc(100% - var(--side-width));
+    --small-carousel-item-width: 290px;
+    --small-carousel-btn-container-width: 50px;
+    /* heights */
+    --small-carousel-height: 450px;
     /* carousel content left */
     --left: 30px;
     /* caousel img height */
-    --slide-img-height: 160px;
+    --slide-img-height: 180px;
     /* h2 circle in middle widths and font sizes */
     --carousel-circle-outer: 60px;
     --carousel-circle-inner: calc(var(--carousel-circle-outer) - 15px);
     --carousel-circle-font-sz: 23px;
+    /* small carousels previous and next btns absodulte position */
+    --small-carousel-btn-pos: 15px
 }
 
 @media(min-width: 481px) {
     :root {
         --side-width: 60px;
         --left: 50px;
-        --slide-img-height: 170px;
+        --slide-img-height: 210px;
         --carousel-circle-outer: 70px;
         --carousel-circle-font-sz: 26px;
+        --small-carousel-height: 500px;
+        --small-carousel-item-width: 350px;
     }
 }
 
@@ -50,6 +58,8 @@
         --side-width: 60px;
         --carousel-circle-outer: 90px;
         --carousel-circle-font-sz: 32px;
+        --small-carousel-item-width: 335px;
+        --small-carousel-btn-pos: calc(var(--side-width) / 2);
     }
 }
 
@@ -60,12 +70,16 @@
         --carousel-circle-outer: 120px;
         --carousel-circle-inner: 100px;
         --carousel-circle-font-sz: 44px;
+        --small-carousel-btn-container-width: 130px;
+        --small-carousel-item-width: 360px;
     }
 }
 
 @media(min-width: 1600px) {
     :root {
-        --content-width: 1200px;
+        --content-width: 1300px;
+        --small-carousel-item-width: 380px;
+        --small-carousel-btn-pos: 6%;
     }
 
 }
