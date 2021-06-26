@@ -25,6 +25,7 @@
     --nav-width: 200px;
     --side-width: 40px;
     --content-side-width: calc(100% - var(--side-width));
+    --small-carousel-item-width: 290px;
     /* heights */
     --small-carousel-height: 450px;
     /* carousel content left */
@@ -45,6 +46,7 @@
         --carousel-circle-outer: 70px;
         --carousel-circle-font-sz: 26px;
         --small-carousel-height: 500px;
+        --small-carousel-item-width: 350px;
     }
 }
 

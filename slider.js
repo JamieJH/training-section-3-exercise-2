@@ -8,13 +8,6 @@ class SmallCarousel {
         this.currentItemWidth = this.slideItems[0].getBoundingClientRect().width
     }
 
-    // arrange the slides next to one another
-    placeInitalPositions() {
-        this.slideItems.forEach((item, index) => {
-            item.style.left = (this.getWidths().itemWidth + 20) * index + 'px'
-        })
-    }
-
     // Get one slide item width and the track width (they change depends on device width)
     getWidths() {
         const tile = this.slideItems[0]
@@ -24,12 +17,24 @@ class SmallCarousel {
         return { itemWidth, trackWidth }
     }
 
+    // on small screen (max 768), only slide right if there's at least 1 slide left; 
+    // on medium ______(max 1200)______________________________________ 2 __________
+    // on x-large _______(min 1300)______________________________________ 3 __________ 
+    getAvailableSlides() {
+        const viewWidth = window.innerWidth 
+        return viewWidth < 768 ? 1 : (viewWidth >= 1200 ? 3 : 2)
+    }
+
     // move the length of 1 slide
     moveCarousel(isPrev) {
         const active = this.track.querySelector(".active")
         const target = isPrev ? active.previousElementSibling : active.nextElementSibling
 
-        if (target) {
+        // only slide right if there are at least 3 slides available
+        const nextSiblings = this.track.querySelectorAll("li.active ~ li")
+        const availableSlides = this.getAvailableSlides()
+
+        if ((isPrev && target) || (!isPrev && nextSiblings.length >= availableSlides)) {
             this.track.style.left = -target.offsetLeft + 'px'
             // set the target class to active
             active.classList.remove("active")
@@ -46,16 +51,7 @@ class SmallCarousel {
         const moveEvents = ["mousemove", "touchmove"]
         const stopEvents = ["mouseup", "mouseleave", "touchend", "touchcancel"]
 
-        this.placeInitalPositions()
-
-        window.addEventListener("resize", () => {
-            const newItemWidth = this.getWidths().itemWidth
-            if (this.currentItemWidth !== newItemWidth) {
-                this.currentItemWidth = newItemWidth
-                this.placeInitalPositions()
-            }
-        })
-
+  
         // next button
         this.nextBtn.addEventListener("click", () => { this.moveCarousel(false) })
 
@@ -75,14 +71,17 @@ class SmallCarousel {
         })
 
         stopEvents.forEach(event => {
-            this.track.addEventListener(event, (e) => {
+            // target the parent container because the track width (ul) does not cover all tiles
+            this.track.parentElement.addEventListener(event, (e) => {
                 if (isMouseDown && willSlide) {
-                    console.log("here");
-
                     // get the point where user stop dragging/swiping
                     endPoint = e.clientX || e.changedTouches[0].clientX
+
                     // if mouse end point < start point, then user swiped/draged left (previous)
-                    this.moveCarousel(endPoint > startPoint)
+                    // only move if user drag at least 50 px
+                    if (Math.abs(endPoint - startPoint) >= 50) {
+                        this.moveCarousel(endPoint > startPoint)
+                    }
                 }
 
                 isMouseDown = false
@@ -94,7 +93,7 @@ class SmallCarousel {
 
         // Slide using mouse drag or phone swipe
         moveEvents.forEach(event => {
-            this.track.addEventListener(event, (e) => {
+            this.track.addEventListener(event, () => {
                 if (isMouseDown) {
                     willSlide = true
 
