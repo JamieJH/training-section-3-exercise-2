@@ -29,8 +29,6 @@ import { SmallCarousel, BigCarousel } from './slider.js'
         arrow.addEventListener("click", () => {
             const targetTop = downTargets[index].getBoundingClientRect().top
             window.scrollBy(0, targetTop - 20);      // Scroll targetTop down
-
-            console.log("clicked");
         })
     })
 
