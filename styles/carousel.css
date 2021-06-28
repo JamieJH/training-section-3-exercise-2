@@ -142,10 +142,10 @@
 
 .carousel-2 .carousel__slide-content_main {
     position: absolute;
-    top: 60%;
+    top: 75%;
     width: calc(100% - var(--left)*2);
     left: 50%;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, -50%);
 }
 
 .carousel-2 .circle__outer {
@@ -190,7 +190,6 @@
     position: absolute;
     bottom: 50%;
     transform: translateY(50%);
-    font-size: 0.7rem;
     background: none;
     border: none;
     color: white;
@@ -266,7 +265,6 @@
     }
     .carousel__button {
         display: block;
-        font-size: 0.8rem;
         height: 30px;
         width: 30px;
         padding-top: 2px;

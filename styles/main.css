@@ -417,9 +417,11 @@ ul {
     .footer {
         justify-content: left;
     }
+    .footer > div {
+        margin-right: 20px;
+    }
     .footer__about {
         width: 300px;
-        margin-right: 10px
     }
     .footer__history {
         width: 200px;

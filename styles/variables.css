@@ -38,7 +38,7 @@
     --carousel-circle-inner: calc(var(--carousel-circle-outer) - 15px);
     --carousel-circle-font-sz: 23px;
     /* small carousels previous and next btns absodulte position */
-    --small-carousel-btn-pos: 15px
+    --small-carousel-btn-pos: calc(var(--side-width) / 2)
 }
 
 @media(min-width: 481px) {
@@ -59,7 +59,6 @@
         --carousel-circle-outer: 90px;
         --carousel-circle-font-sz: 32px;
         --small-carousel-item-width: 335px;
-        --small-carousel-btn-pos: calc(var(--side-width) / 2);
     }
 }
 
