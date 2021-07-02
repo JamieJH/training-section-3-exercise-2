@@ -49,7 +49,7 @@
         --carousel-circle-outer: 70px;
         --carousel-circle-font-sz: 26px;
         --small-carousel-height: 500px;
-        --small-carousel-item-width: 350px;
+        /* --small-carousel-item-width: 350px; */
     }
 }
 
@@ -58,7 +58,7 @@
         --side-width: 60px;
         --carousel-circle-outer: 90px;
         --carousel-circle-font-sz: 32px;
-        --small-carousel-item-width: 335px;
+        --small-carousel-item-width: 325px;
     }
 }
 

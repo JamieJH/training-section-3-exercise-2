@@ -394,7 +394,7 @@ ul {
     /* ***************************************************************** */
     /* MAIN */
     .columns {
-        padding: 0 100px;
+        padding: 0 calc(6% + var(--side-width)) 0 100px;
     }
     .texture__content {
         right: 100px;
@@ -441,6 +441,8 @@ ul {
     .text-section__main {
         width: var(--content-width);
         margin: 0 auto;
+        padding-right: 5%;
+        box-sizing: border-box;
     }
     .columns {
         width: 100%;

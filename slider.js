@@ -2,27 +2,33 @@ class SmallCarousel {
     constructor(carouselBlock) {
         this.carouselBlock = carouselBlock
         this.track = carouselBlock.querySelector(".carousel-blocks__track")
-        this.slideItems = Array.from(this.track.children)           // number of slides
+        this.slideItems = Array.from(this.track.children)           // array of slides
         this.prevBtn = carouselBlock.querySelector(".carousel-blocks__button.left")
         this.nextBtn = carouselBlock.querySelector(".carousel-blocks__button.right")
-        this.currentItemWidth = this.slideItems[0].getBoundingClientRect().width
+        this.setInitialTrackLeft()
     }
 
-    // Get one slide item width and the track width (they change depends on device width)
-    getWidths() {
-        const tile = this.slideItems[0]
-        // console.log(tile.style.margin);
-        const itemWidth = tile.getBoundingClientRect().width;
-        const trackWidth = itemWidth * this.slideItems.length
-        return { itemWidth, trackWidth }
+    setInitialTrackLeft() {
+        let lastSlideIndex
+        if (window.innerWidth >= 1380) {
+            lastSlideIndex = this.slideItems.length - 3
+        }
+        else if (window.innerWidth >= 768) {
+            lastSlideIndex = this.slideItems.length - 2
+        }
+        else {
+            lastSlideIndex = this.slideItems.length - 1
+        }
+        this.setLastActive([], lastSlideIndex)
     }
 
     // on small screen (max 768), only slide right if there's at least 1 slide left; 
     // on medium ______(max 1200)______________________________________ 2 __________
     // on x-large _______(min 1300)______________________________________ 3 __________ 
     getAvailableSlides() {
-        const viewWidth = window.innerWidth 
-        return viewWidth < 768 ? 1 : (viewWidth >= 1200 ? 3 : 2)
+        const viewWidth = window.innerWidth
+        // last carousel area show max 1 slides on screen < 768, max 2 on screen < 1380
+        return viewWidth < 768 ? 1 : (viewWidth >= 1380 ? 3 : 2)
     }
 
     // move the length of 1 slide
@@ -42,6 +48,18 @@ class SmallCarousel {
         }
     }
 
+    setLastActive([...removeActiveIndices], newActiveIndex) {
+        removeActiveIndices.forEach(index => {
+            this.slideItems[index].classList.remove("active")
+        })
+        const marginRight = parseInt(getComputedStyle(Array.from(this.track.children)[0]).marginRight)
+        this.slideItems[newActiveIndex].classList.add("active")
+
+        setTimeout(() => {
+            this.track.style.left = - (this.track.offsetWidth + marginRight) * newActiveIndex + 'px'
+        }, 500)
+    }
+
     execute() {
         let startPoint = 0
         let endPoint = 0
@@ -51,7 +69,20 @@ class SmallCarousel {
         const moveEvents = ["mousemove", "touchmove"]
         const stopEvents = ["mouseup", "mouseleave", "touchend", "touchcancel"]
 
-  
+        window.addEventListener("resize", () => {
+            const slidesNum = this.slideItems.length
+            const lastSlide = this.slideItems[slidesNum - 1]
+            const secondLastSlide = this.slideItems[slidesNum - 2]
+            if (window.innerWidth >= 1380 &&
+                (lastSlide.classList.contains("active") || secondLastSlide.classList.contains("active"))) {
+                this.setLastActive([slidesNum - 1, slidesNum - 2], slidesNum - 3)
+            }
+            else if ((window.innerWidth >= 768) && lastSlide.classList.contains("active")) {
+                this.setLastActive([slidesNum - 1], slidesNum - 2)
+            }
+        })
+
+
         // next button
         this.nextBtn.addEventListener("click", () => { this.moveCarousel(false) })
 
@@ -149,9 +180,12 @@ class BigCarousel {
         targetSlide.classList.add("active")
     }
 
-    slideUsingBtns(isNext) {
-        // Cancel auto slide after change slide using btns
-        this.cancelAutoSlide()
+    slideUsingBtns(isNext, useButtons = true) {
+        if (useButtons) {
+            // Cancel auto slide after change slide using btns
+            this.cancelAutoSlide()
+        }
+
 
         const currentSlide = this.track.querySelector(".active")
         let siblingSlide = isNext ? currentSlide.nextElementSibling : currentSlide.previousElementSibling
@@ -165,12 +199,14 @@ class BigCarousel {
         this.moveToSlide(currentSlide, siblingSlide)
         this.updateIndicator(currentSlide, isNext, null, null)
 
-        // Set auto slide after change slide using btns
-        this.setAutoSlide()
+        if (useButtons) {
+            // Set auto slide after change slide using btns
+            this.setAutoSlide()
+        }
     }
 
     setAutoSlide() {
-        this.intervalId = setInterval(() => this.slideUsingBtns(true), 5000)
+        this.intervalId = setInterval(() => this.slideUsingBtns(true, false), 6000)
     }
 
     cancelAutoSlide() {
@@ -194,6 +230,9 @@ class BigCarousel {
         this.indicator.addEventListener("click", (e) => {
             const clickedDot = e.target.closest("button")
             if (clickedDot) {
+                // Cancel auto slide after change slide using inidcators
+                this.cancelAutoSlide()
+
                 const currentSlide = this.track.querySelector(".active")
                 const currentDot = this.indicator.querySelector(".active")
 
@@ -203,6 +242,9 @@ class BigCarousel {
 
                 this.moveToSlide(currentSlide, targetSlide)
                 this.updateIndicator(null, null, currentDot, clickedDot)
+
+                // Set auto slide after done sliding
+                this.setAutoSlide()
             }
         })
 

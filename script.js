@@ -3,10 +3,10 @@ import { SmallCarousel, BigCarousel } from './slider.js'
 (function () {
 
     // Navigation
-    var header = document.querySelector("header")
-    var sidebarToggler = header.querySelector(".sidebar-toggler");
-    var overlay = document.querySelector(".overlay")
-    var navBarList = header.querySelector("#nav-bar > ul")
+    const header = document.querySelector("header")
+    const sidebarToggler = header.querySelector(".sidebar-toggler");
+    const overlay = document.querySelector(".overlay")
+    const navBarList = header.querySelector("#nav-bar > ul")
 
     sidebarToggler.addEventListener("click", function () {
         overlay.classList.toggle("show")
